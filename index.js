@@ -45,7 +45,7 @@ function filterMoviesByGenre(selectedGenre) {
 }
 
 function displayMovies(movies) {
-  const moviesContainer = document.getElementById("movies-container");
+  const moviesContainer = document.getElementById("my-lib-movies");
   moviesContainer.innerHTML = "";
 
   movies.forEach((movie) => {
@@ -55,11 +55,13 @@ function displayMovies(movies) {
   });
 }
 
-//!!!
 function createGenreDropdown(genres) {
-  const genreContainer = document.getElementById("genre-container");
+  const genreContainer = document.getElementById("my-lib-genre");
   const select = document.createElement("select");
   select.addEventListener("change", handleGenreDropdownChange);
+  const placeholderOption = document.createElement("option");
+  placeholderOption.textContent = "Genre";
+  select.appendChild(placeholderOption);
 
   genres.forEach((genre) => {
     const option = document.createElement("option");
@@ -71,7 +73,6 @@ function createGenreDropdown(genres) {
   genreContainer.appendChild(select);
 }
 
-// !!!
 function handleGenreDropdownChange(event) {
   const selectedGenre = parseInt(event.target.value);
   filterMoviesByGenre(selectedGenre);
